@@ -31,7 +31,7 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          href="/admin"
+          href="/add-destination"
           className="font-medium hover:text-[#15A1BF] focus:text-[#15A1BF]"
         >
           Admin
@@ -75,10 +75,13 @@ const Navbar = () => {
         <Link href="/">Home</Link>
       </li>
       <li>
-        <Link href="/about">About</Link>
+        <Link href="/about">Destinations</Link>
       </li>
       <li>
-        <Link href="/contact">Contact</Link>
+        <Link href="/contact">My Bookings</Link>
+      </li>
+      <li>
+        <Link href="/add-destination">Admin</Link>
       </li>
       <li>
         <Link href="/profile">Profile</Link>
@@ -93,7 +96,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="px-4">
+    <div className="p-4">
       <div className="max-lg:collapse bg-white text-[#0C0B0B] shadow-sm w-full rounded-md">
         <input id="navbar-1-toggle" className="peer hidden" type="checkbox" />
         <label

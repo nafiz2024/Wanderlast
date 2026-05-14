@@ -28,7 +28,7 @@ const Banner = () => {
           "linear-gradient(rgba(12, 23, 26, 0.34), rgba(12, 23, 26, 0.34)), url('/assets/Banner.png')",
       }}
     >
-      <div className="absolute inset-x-0 top-0 z-20 pt-4">
+      <div className="absolute inset-x-0 top-0 z-20">
         <Navbar />
       </div>
 

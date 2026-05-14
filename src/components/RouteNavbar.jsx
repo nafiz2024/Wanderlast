@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar";
 const RouteNavbar = () => {
   const pathname = usePathname();
 
-  if (pathname === "/") {
+  if (pathname === "/" || pathname === "/add-destination") {
     return null;
   }
 
