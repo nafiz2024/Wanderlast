@@ -32,25 +32,25 @@ const Banner = () => {
         <Navbar />
       </div>
 
-      <div className="mx-auto flex w-full max-w-[1200px] flex-1 items-center justify-center px-6 pb-20 pt-32 text-center sm:pb-24 sm:pt-36 lg:pb-28 lg:pt-40">
+      <div className="mx-auto flex w-full max-w-[1200px] flex-1 items-center justify-center px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-24 sm:pt-36 lg:pb-28 lg:pt-40">
         <div className="max-w-[1160px]">
-          <h1 className="text-5xl font-normal leading-[0.95] tracking-tight sm:text-6xl lg:text-[72px]">
+          <h1 className="text-[40px] font-normal leading-[0.95] tracking-tight sm:text-6xl lg:text-[72px]">
             Discover Your
             <br />
             Next Adventure
           </h1>
 
-          <p className="mx-auto mt-5 max-w-[1120px] text-lg font-normal text-white sm:text-2xl">
+          <p className="mx-auto mt-5 max-w-[1120px] text-base font-normal text-white sm:text-xl lg:text-2xl">
             Explore breathtaking destinations and create unforgettable
             memories with our curated travel experiences.
           </p>
 
-          <div className="mt-5 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
-            <button className="min-w-[148px] bg-[#12b7ee] px-6 py-3 text-xl font-medium uppercase text-white transition-colors hover:bg-[#0ea6d8]">
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-5">
+            <button className="min-w-[148px] bg-[#12b7ee] px-6 py-3 text-base font-medium uppercase text-white transition-colors hover:bg-[#0ea6d8] sm:text-lg">
               Explore Now
             </button>
 
-            <button className="min-w-[181px] bg-white/35 px-6 py-3 text-xl font-medium uppercase text-white backdrop-blur-[1px] transition-colors hover:bg-white/45">
+            <button className="min-w-[181px] bg-white/35 px-6 py-3 text-base font-medium uppercase text-white backdrop-blur-[1px] transition-colors hover:bg-white/45 sm:text-lg">
               View Destination
             </button>
           </div>
@@ -58,11 +58,11 @@ const Banner = () => {
       </div>
 
       <div className="w-full bg-white/30 backdrop-blur-[2px]">
-        <div className="grid min-h-[72px] w-full grid-cols-1 sm:grid-cols-[1.2fr_1.1fr_1fr_1fr_auto]">
+        <div className="grid min-h-[72px] w-full grid-cols-1 md:grid-cols-2 xl:grid-cols-[1.2fr_1.1fr_1fr_1fr_auto]">
           {searchFields.map((field) => (
             <div
               key={field.title}
-              className="flex min-h-[72px] flex-col justify-center border-b border-white/25 px-3 py-2 text-left last:border-b-0 sm:border-r sm:border-b-0 sm:border-white/30"
+              className="flex min-h-[72px] flex-col justify-center border-b border-white/25 px-4 py-3 text-left last:border-b-0 md:border-r md:border-white/30 xl:border-b-0"
             >
               <h3 className="text-[14px] font-medium leading-5 text-white">
                 {field.title}
@@ -71,7 +71,7 @@ const Banner = () => {
             </div>
           ))}
 
-          <button className="flex min-h-[72px] items-center justify-center bg-[#14b7ec] px-6 text-[16px] font-medium text-white transition-colors hover:bg-[#0ea6d8]">
+          <button className="flex min-h-[72px] items-center justify-center bg-[#14b7ec] px-6 text-[16px] font-medium text-white transition-colors hover:bg-[#0ea6d8] md:col-span-2 xl:col-span-1">
             Search
           </button>
         </div>

@@ -19,13 +19,13 @@ export default async function DestinationPage() {
           </p>
         </div>
 
-        <div className="grid gap-0 md:grid-cols-3">
+        <div className="grid gap-0 sm:grid-cols-2 xl:grid-cols-3">
           {["CATEGORY", "PRICE RANGE", "SORT BY"].map((label, index) => (
             <button
               key={label}
               type="button"
               className={`flex h-[46px] items-center justify-between border border-[#d9d9d9] bg-white px-4 text-left text-[12px] font-normal tracking-[0.01em] text-[#8c8c8c] ${
-                index > 0 ? "md:border-l-0" : ""
+                index > 0 ? "sm:border-l-0 xl:border-l-0" : ""
               }`}
             >
               <span>{label}</span>
@@ -38,7 +38,7 @@ export default async function DestinationPage() {
           Showing {destinations.length} destinations
         </p>
 
-        <div className="mt-10 grid gap-x-4 gap-y-8 grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
           <DestinationCard destinations={destinations} />
         </div>
       </div>

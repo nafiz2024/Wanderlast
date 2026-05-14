@@ -44,7 +44,7 @@ const AddDestinationPage = () => {
 
   return (
     <section
-      className="relative bg-cover bg-center bg-no-repeat px-6 pb-24 pt-10 lg:px-9"
+      className="relative bg-cover bg-center bg-no-repeat px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-10 lg:px-9"
       style={{
         backgroundImage:
           "linear-gradient(rgba(12, 23, 26, 0.34), rgba(12, 23, 26, 0.34)), url('/assets/Banner.png')",
@@ -55,11 +55,11 @@ const AddDestinationPage = () => {
       </div>
 
       <div className="mx-auto max-w-[1240px]">
-        <h1 className="pt-24 text-[32px] font-normal tracking-tight text-white md:pt-28 md:text-[36px]">
+        <h1 className="pt-24 text-[28px] font-normal tracking-tight text-white sm:text-[32px] md:pt-28 md:text-[36px]">
           Add New Travel Package
         </h1>
 
-        <div className="mx-auto mt-14 max-w-[684px] border border-[#ececec] bg-white px-5 py-6 shadow-[0_8px_24px_rgba(15,23,42,0.08)] sm:px-7 sm:py-7 md:px-8">
+        <div className="mx-auto mt-10 max-w-[684px] border border-[#ececec] bg-white px-4 py-5 shadow-[0_8px_24px_rgba(15,23,42,0.08)] sm:mt-14 sm:px-7 sm:py-7 md:px-8">
           <form onSubmit={onSubmit} className="space-y-4.5">
             <div>
               <label

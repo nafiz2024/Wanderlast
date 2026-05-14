@@ -96,21 +96,21 @@ const Navbar = () => {
   );
 
   return (
-    <div className="p-4">
-      <div className="max-lg:collapse bg-white text-[#0C0B0B] shadow-sm w-full rounded-md">
+    <div className="p-3 sm:p-4">
+      <div className="max-lg:collapse w-full rounded-md bg-white text-[#0C0B0B] shadow-sm">
         <input id="navbar-1-toggle" className="peer hidden" type="checkbox" />
         <label
           htmlFor="navbar-1-toggle"
           className="fixed inset-0 hidden max-lg:peer-checked:block"
         ></label>
-        <div className="collapse-title navbar px-6">
+        <div className="collapse-title navbar min-h-[68px] px-4 sm:px-6">
           <div className="navbar-start hidden lg:flex">
-            <ul className="menu menu-horizontal flex gap-5">{navLinks}</ul>
+            <ul className="menu menu-horizontal flex gap-4 xl:gap-5">{navLinks}</ul>
           </div>
-          <div className="navbar-center">
+          <div className="navbar-start lg:hidden">
             <label
               htmlFor="navbar-1-toggle"
-              className="btn btn-ghost lg:hidden"
+              className="btn btn-ghost h-10 min-h-10 w-10 p-0 lg:hidden"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -127,23 +127,26 @@ const Navbar = () => {
                 />
               </svg>
             </label>
+          </div>
+          <div className="navbar-center lg:flex-1">
             <Link href="/">
               <Image
                 src={logo}
                 alt="Wanderlast Logo"
                 width={162}
                 height={24}
-                className="mr-2"
+                className="h-auto w-[128px] sm:w-[152px] lg:w-[162px]"
               />
             </Link>
           </div>
-          <div className="navbar-end  hidden lg:flex">
-            <ul className="menu menu-horizontal flex gap-5">{accountLinks}</ul>
+          <div className="navbar-end hidden lg:flex">
+            <ul className="menu menu-horizontal flex gap-4 xl:gap-5">{accountLinks}</ul>
           </div>
+          <div className="navbar-end lg:hidden"></div>
         </div>
 
-        <div className="collapse-content lg:hidden z-1">
-          <ul className="menu flex gap-5">{mobileNavLinks}</ul>
+        <div className="collapse-content z-1 border-t border-[#f1f1f1] px-4 pb-4 pt-2 lg:hidden">
+          <ul className="menu flex gap-1 text-[14px]">{mobileNavLinks}</ul>
         </div>
       </div>
     </div>

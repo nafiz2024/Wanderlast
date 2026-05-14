@@ -1,7 +1,6 @@
 "use client";
 
 import { AlertDialog, Button } from "@heroui/react";
-import { redirect } from "next/dist/server/api-utils";
 import { FiTrash2 } from "react-icons/fi";
 
 export function DeleteDestinationCard({ destination }) {
@@ -25,7 +24,7 @@ export function DeleteDestinationCard({ destination }) {
       </Button>
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
-          <AlertDialog.Dialog className="sm:max-w-[400px]">
+          <AlertDialog.Dialog className="max-w-[calc(100vw-24px)] sm:max-w-[400px]">
             <AlertDialog.CloseTrigger />
             <AlertDialog.Header>
               <AlertDialog.Icon status="danger" />

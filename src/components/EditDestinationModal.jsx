@@ -46,9 +46,9 @@ export function EditDestinationModal( { destination }) {
       </Button>
       <Modal.Backdrop>
         <Modal.Container placement="auto">
-          <Modal.Dialog className="w-[690px] max-w-[calc(100vw-32px)] rounded-none border border-[#e5e7eb] bg-white p-0 shadow-none">
+          <Modal.Dialog className="w-[690px] max-w-[calc(100vw-24px)] rounded-none border border-[#e5e7eb] bg-white p-0 shadow-none sm:max-w-[calc(100vw-32px)]">
             <Modal.CloseTrigger className="right-4 top-4 text-[#a3a3a3]" />
-            <Modal.Header className="px-8 pb-0 pt-8">
+            <Modal.Header className="px-4 pb-0 pt-6 sm:px-8 sm:pt-8">
               <div>
                 <Modal.Heading className="text-[20px] font-medium tracking-[-0.03em] text-[#111111]">
                   Update Travel Package
@@ -58,7 +58,7 @@ export function EditDestinationModal( { destination }) {
                 </p>
               </div>
             </Modal.Header>
-            <Modal.Body className="px-8 pb-8 pt-14">
+            <Modal.Body className="px-4 pb-6 pt-10 sm:px-8 sm:pb-8 sm:pt-14">
               <form onSubmit={onSubmit} className="space-y-5">
                 <div>
                   <input

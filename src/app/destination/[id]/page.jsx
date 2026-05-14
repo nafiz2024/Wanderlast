@@ -4,10 +4,8 @@ import {
   FiArrowLeft,
   FiCalendar,
   FiCheck,
-  FiEdit2,
   FiMapPin,
   FiStar,
-  FiX,
 } from "react-icons/fi";
 import { getDestinationById } from "@/lib/data";
 import { EditDestinationModal } from "@/components/EditDestinationModal";
@@ -48,7 +46,7 @@ const DestinationsDetailsPage = async ({ params }) => {
   return (
     <section className="bg-white px-4 pb-20 pt-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-[1160px]">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <Link
             href="/destination"
             className="inline-flex items-center gap-2 text-[13px] text-[#7f7f7f] transition-colors hover:text-[#1f1f1f]"
@@ -57,13 +55,13 @@ const DestinationsDetailsPage = async ({ params }) => {
             <span>Back to Destinations</span>
           </Link>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <EditDestinationModal destination={destination} />
             <DeleteDestinationCard destination={destination} />
           </div>
         </div>
 
-        <div className="relative mt-7 aspect-[2.1/1] overflow-hidden bg-[#eef2f5]">
+        <div className="relative mt-7 aspect-[1.5/1] overflow-hidden bg-[#eef2f5] sm:aspect-[1.8/1] lg:aspect-[2.1/1]">
           <Image
             src={destination.imageUrl}
             alt={destination.destinationName || "Destination image"}
@@ -76,14 +74,14 @@ const DestinationsDetailsPage = async ({ params }) => {
           />
         </div>
 
-        <div className="mt-9 grid gap-10 lg:grid-cols-[minmax(0,1fr)_310px]">
+        <div className="mt-9 grid gap-8 lg:grid-cols-[minmax(0,1fr)_310px] lg:gap-10">
           <div>
             <div className="flex items-center gap-1.5 text-[12px] text-[#8e8e8e]">
               <FiMapPin className="h-3.5 w-3.5" />
               <span>{destination.country || "Unknown"}</span>
             </div>
 
-            <h1 className="mt-3 text-[40px] leading-[1.04] font-extralight tracking-[-0.045em] text-[#1f1f1f] sm:text-[56px]">
+            <h1 className="mt-3 text-[34px] leading-[1.04] font-extralight tracking-[-0.045em] text-[#1f1f1f] sm:text-[44px] lg:text-[56px]">
               {destination.destinationName || "Untitled Destination"}
             </h1>
 
@@ -105,14 +103,14 @@ const DestinationsDetailsPage = async ({ params }) => {
               <h2 className="text-[22px] font-medium tracking-[-0.03em] text-[#1f1f1f]">
                 Overview
               </h2>
-              <p className="mt-4 max-w-[720px] text-[13px] leading-7 text-[#777777]">
+              <p className="mt-4 max-w-[720px] text-[13px] leading-7 text-[#777777] sm:text-[14px]">
                 {destination.description ||
                   "No description available for this destination yet."}
               </p>
             </div>
           </div>
 
-          <aside className="h-fit border border-[#ececec] bg-white px-5 py-6 shadow-[0_10px_30px_rgba(15,23,42,0.04)]">
+          <aside className="h-fit border border-[#ececec] bg-white px-5 py-6 shadow-[0_10px_30px_rgba(15,23,42,0.04)] lg:sticky lg:top-6">
             <p className="text-[11px] text-[#9a9a9a]">Starting from</p>
             <p className="mt-2 text-[38px] leading-none font-bold text-[#19a7c6]">
               ${destination.price || "0"}

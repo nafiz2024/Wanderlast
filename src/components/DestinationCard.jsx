@@ -48,13 +48,13 @@ const DestinationCard = ({ destinations }) => {
               <span>{destination.country || "Unknown"}</span>
             </div>
 
-            <div className="mt-1 flex items-start justify-between gap-3">
-              <h2 className="text-[22px] leading-[1.2] font-normal text-[#202020]">
+            <div className="mt-1 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+              <h2 className="text-[20px] leading-[1.2] font-normal text-[#202020] sm:text-[22px]">
                 {destination.destinationName || "Untitled"}
               </h2>
 
-              <div className="shrink-0 pt-1">
-                <span className="text-[22px] leading-none font-normal text-[#202020]">
+              <div className="shrink-0 pt-0 sm:pt-1">
+                <span className="text-[20px] leading-none font-normal text-[#202020] sm:text-[22px]">
                   ${destination.price}
                 </span>
                 <span className="text-[11px] text-[#9a9a9a]">/Person</span>
