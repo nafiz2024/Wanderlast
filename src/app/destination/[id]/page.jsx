@@ -11,6 +11,7 @@ import {
 } from "react-icons/fi";
 import { getDestinationById } from "@/lib/data";
 import { EditDestinationModal } from "@/components/EditDestinationModal";
+import { DeleteDestinationCard } from "@/components/DeleteDestinationCard";
 
 const getDurationText = (duration) => {
   const numericDuration = Number(duration);
@@ -58,13 +59,7 @@ const DestinationsDetailsPage = async ({ params }) => {
 
           <div className="flex items-center gap-3">
             <EditDestinationModal destination={destination} />
-            <Link
-              href="/destination"
-              className="inline-flex h-10 items-center justify-center gap-2 border border-[#ffb7b7] bg-white px-4 text-[12px] font-medium text-[#f15d5d] transition-colors hover:bg-[#fff5f5]"
-            >
-              <FiX className="h-3.5 w-3.5" />
-              <span>Cancel</span>
-            </Link>
+            <DeleteDestinationCard destination={destination} />
           </div>
         </div>
 
