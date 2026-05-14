@@ -10,6 +10,7 @@ import {
   FiX,
 } from "react-icons/fi";
 import { getDestinationById } from "@/lib/data";
+import { EditDestinationModal } from "@/components/EditDestinationModal";
 
 const getDurationText = (duration) => {
   const numericDuration = Number(duration);
@@ -56,13 +57,7 @@ const DestinationsDetailsPage = async ({ params }) => {
           </Link>
 
           <div className="flex items-center gap-3">
-            <Link
-              href={`/add-destination?id=${id}`}
-              className="inline-flex h-10 items-center justify-center gap-2 border border-[#d8d8d8] bg-white px-4 text-[12px] font-medium text-[#2a2a2a] transition-colors hover:bg-[#f8f8f8]"
-            >
-              <FiEdit2 className="h-3.5 w-3.5" />
-              <span>Edit</span>
-            </Link>
+            <EditDestinationModal destination={destination} />
             <Link
               href="/destination"
               className="inline-flex h-10 items-center justify-center gap-2 border border-[#ffb7b7] bg-white px-4 text-[12px] font-medium text-[#f15d5d] transition-colors hover:bg-[#fff5f5]"
@@ -116,7 +111,8 @@ const DestinationsDetailsPage = async ({ params }) => {
                 Overview
               </h2>
               <p className="mt-4 max-w-[720px] text-[13px] leading-7 text-[#777777]">
-                {destination.description || "No description available for this destination yet."}
+                {destination.description ||
+                  "No description available for this destination yet."}
               </p>
             </div>
           </div>

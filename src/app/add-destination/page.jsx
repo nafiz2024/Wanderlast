@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { FiCalendar, FiChevronDown, FiPlus, FiX } from "react-icons/fi";
 import Navbar from "@/components/Navbar";
@@ -10,6 +11,7 @@ const inputClassName =
 
 const AddDestinationPage = () => {
   const departureDateRef = useRef(null);
+  const router = useRouter();
 
   const handleOpenDatePicker = () => {
     if (!departureDateRef.current) {
@@ -20,18 +22,24 @@ const AddDestinationPage = () => {
     departureDateRef.current.focus();
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const destination = Object.fromEntries(formData.entries());
 
-    fetch("http://localhost:5000/destination", {
+    const res = await fetch("http://localhost:5000/destination", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(destination),
-    }); 
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to add destination: ${res.status}`);
+    }
+
+    router.push("/destination");
   };
 
   return (
