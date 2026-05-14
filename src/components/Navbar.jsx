@@ -93,8 +93,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className="p-4">
-      <div className="max-lg:collapse  lg:mb-48 shadow-sm w-full rounded-md">
+    <div className="px-4">
+      <div className="max-lg:collapse bg-white text-[#0C0B0B] shadow-sm w-full rounded-md">
         <input id="navbar-1-toggle" className="peer hidden" type="checkbox" />
         <label
           htmlFor="navbar-1-toggle"
