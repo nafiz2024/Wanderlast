@@ -20,24 +20,18 @@ const AddDestinationPage = () => {
     departureDateRef.current.focus();
   };
 
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const destination = Object.fromEntries(formData.entries());
 
-    console.log("New Destination:", destination);
-
-    const res = await fetch("http://localhost:5000/destinations", {
+    fetch("http://localhost:5000/destinations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(destination),
     }); 
-
-    const data = await res.json();
-
-    console.log("Response from server:", data);
   };
 
   return (

@@ -15,7 +15,7 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          href="/destinations"
+          href="/destination"
           className="font-medium hover:text-[#15A1BF] focus:text-[#15A1BF]"
         >
           Destinations
@@ -75,7 +75,7 @@ const Navbar = () => {
         <Link href="/">Home</Link>
       </li>
       <li>
-        <Link href="/about">Destinations</Link>
+        <Link href="/destination">Destinations</Link>
       </li>
       <li>
         <Link href="/contact">My Bookings</Link>
