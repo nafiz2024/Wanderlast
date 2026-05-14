@@ -3,7 +3,6 @@ import Link from "next/link";
 import {
   FiArrowUpRight,
   FiCalendar,
-  FiChevronDown,
   FiMapPin,
   FiStar,
 } from "react-icons/fi";
@@ -18,7 +17,7 @@ const getDurationText = (duration) => {
   return `${days} Days/${Math.max(days - 1, 0)} Nights`;
 };
 
-const DestinationCard = ({ destinations}) => {
+const DestinationCard = ({ destinations }) => {
   return (
     <>
       {destinations.map((destination, index) => {
@@ -32,6 +31,8 @@ const DestinationCard = ({ destinations}) => {
                 src={destination.imageUrl}
                 alt={destination.destinationName || "Destination image"}
                 fill
+                quality={100}
+                unoptimized
                 sizes="(max-width: 639px) 100vw, (max-width: 1279px) 50vw, 33vw"
                 className="object-cover transition duration-300 group-hover:scale-[1.03]"
               />
@@ -66,7 +67,7 @@ const DestinationCard = ({ destinations}) => {
             </div>
 
             <Link
-              href="/myBookings"
+              href={`/destination/${destination._id}`}
               className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-medium uppercase tracking-[0.01em] text-[#15A1BF]"
             >
               BOOK NOW

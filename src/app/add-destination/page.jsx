@@ -25,7 +25,7 @@ const AddDestinationPage = () => {
     const formData = new FormData(e.currentTarget);
     const destination = Object.fromEntries(formData.entries());
 
-    fetch("http://localhost:5000/destinations", {
+    fetch("http://localhost:5000/destination", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
