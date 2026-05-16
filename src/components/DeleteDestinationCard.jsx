@@ -14,7 +14,7 @@ export function DeleteDestinationCard({ destination }) {
         });
 
         window.location.href = "/destination";
-    }
+    } 
 
   return (
     <AlertDialog>
