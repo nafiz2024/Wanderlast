@@ -104,7 +104,7 @@ const Navbar = () => {
           className="fixed inset-0 hidden max-lg:peer-checked:block"
         ></label>
         <div className="collapse-title navbar min-h-[68px] px-4 sm:px-6">
-          <div className="navbar-start hidden lg:flex">
+          <div className="navbar-start hidden flex-1 lg:flex">
             <ul className="menu menu-horizontal flex gap-4 xl:gap-5">{navLinks}</ul>
           </div>
           <div className="navbar-start lg:hidden">
@@ -128,8 +128,8 @@ const Navbar = () => {
               </svg>
             </label>
           </div>
-          <div className="navbar-center lg:flex-1">
-            <Link href="/">
+          <div className="navbar-center mx-4 shrink-0">
+            <Link href="/" className="inline-flex items-center justify-center">
               <Image
                 src={logo}
                 alt="Wanderlast Logo"
@@ -139,7 +139,7 @@ const Navbar = () => {
               />
             </Link>
           </div>
-          <div className="navbar-end hidden lg:flex">
+          <div className="navbar-end hidden flex-1 lg:flex">
             <ul className="menu menu-horizontal flex gap-4 xl:gap-5">{accountLinks}</ul>
           </div>
           <div className="navbar-end lg:hidden"></div>
