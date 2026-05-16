@@ -56,6 +56,12 @@ const SignUpPage = () => {
     }
   };
 
+  const handleGoogleSignin = async () => {
+    await authClient.signIn.social({
+      provider: "google"
+    })
+  }
+
   return (
     <section className="min-h-[calc(100vh-56px)] bg-linear-to-b from-[#f8f8fa] to-[#f3f4f6] px-4 py-14">
       <div className="mx-auto w-full max-w-[558px]">
@@ -165,7 +171,8 @@ const SignUpPage = () => {
             </div>
 
             <button
-              type="button"
+            onClick={handleGoogleSignin}
+              type="submit"
               className="inline-flex h-[50px] w-full items-center justify-center gap-[10px] border border-[#efefef] bg-white text-sm font-medium text-[#151515]"
             >
               <FcGoogle className="h-[18px] w-[18px] shrink-0" />
