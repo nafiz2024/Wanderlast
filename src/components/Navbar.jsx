@@ -52,7 +52,7 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          href="/login"
+          href="/signin"
           className="font-medium hover:text-[#15A1BF] focus:text-[#15A1BF]"
         >
           Login
@@ -60,7 +60,7 @@ const Navbar = () => {
       </li>
       <li>
         <Link
-          href="/register"
+          href="/signup"
           className="font-medium hover:text-[#15A1BF] focus:text-[#15A1BF]"
         >
           Register

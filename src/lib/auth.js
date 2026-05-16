@@ -1,15 +1,28 @@
 import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
-import { mongodbAdapter } from "better-auth/adapters/mongodb";
+import { mongodbAdapter } from "@better-auth/mongo-adapter";
 
-const client = new MongoClient(process.env.MONGODB_URI);
-const db = client.db(wanderlust);
+let client;
+
+const getMongoClient = () => {
+  if (!process.env.MONGODB_URI) {
+    throw new Error("Missing MONGODB_URI environment variable");
+  }
+
+  if (!client) {
+    client = new MongoClient(process.env.MONGODB_URI);
+  }
+
+  return client;
+};
+
+const getDatabase = () => getMongoClient().db("wanderlust");
 
 export const auth = betterAuth({
-  database: mongodbAdapter(db, {
-    client
+  database: mongodbAdapter(getDatabase(), {
+    client: getMongoClient(),
   }),
-   emailAndPassword: { 
-    enabled: true, 
-  }, 
+  emailAndPassword: {
+    enabled: true,
+  },
 });
