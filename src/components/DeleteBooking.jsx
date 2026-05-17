@@ -3,18 +3,18 @@
 import { AlertDialog, Button } from "@heroui/react";
 import { FiTrash2 } from "react-icons/fi";
 
-export function DeleteDestinationCard({ destination }) {
- 
-    const handleDelete = async () => {
-        await fetch(`http://localhost:5000/destination/${destination._id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        });
+export function DeleteBooking({ bookingId }) {
 
-        window.location.href = "/destination";
-    } 
+    const handleCancelBooking = async() => {
+        await fetch(`http://localhost:5000/booking/${bookingId}`, {
+            method: "DELETE",
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+
+        window.location.href = "/my-bookings";
+    }
 
   return (
     <AlertDialog>
@@ -26,27 +26,24 @@ export function DeleteDestinationCard({ destination }) {
       </AlertDialog.Trigger>
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
-          <AlertDialog.Dialog className="max-w-[calc(100vw-24px)] sm:max-w-[400px]">
+          <AlertDialog.Dialog className="sm:max-w-[400px]">
             <AlertDialog.CloseTrigger />
             <AlertDialog.Header>
               <AlertDialog.Icon status="danger" />
-              <AlertDialog.Heading>
-                Delete {destination.destinationName} Package?
-              </AlertDialog.Heading>
+              <AlertDialog.Heading>Delete booking permanently?</AlertDialog.Heading>
             </AlertDialog.Header>
             <AlertDialog.Body>
               <p>
-                This will permanently delete{" "}
-                <strong>{destination.destinationName}</strong> and all of its data.
-                This action cannot be undone.
+                This will permanently delete My Booking and all of its
+                data. This action cannot be undone.
               </p>
             </AlertDialog.Body>
             <AlertDialog.Footer>
               <Button slot="close" variant="tertiary">
                 Cancel
               </Button>
-              <Button onClick={handleDelete} slot="close" variant="danger">
-                Delete This Package
+              <Button onClick={handleCancelBooking} slot="close" variant="danger">
+                Delete Booking
               </Button>
             </AlertDialog.Footer>
           </AlertDialog.Dialog>
