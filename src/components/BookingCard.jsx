@@ -44,9 +44,9 @@ export function BookingCard({ destination }) {
     }
 
     const bookingData = {
-      userId: user.id,
-      userImage: user.image || "",
-      userName: user.name || "",
+      userId: user?.id,
+      userImage: user?.image || "",
+      userName: user?.name || "",
       destinationId: _id,
       destinationName,
       imageUrl,
@@ -54,15 +54,31 @@ export function BookingCard({ destination }) {
       departureDate: new Date(departureDate),
     };
 
-    res = await fetch('http://localhost:5000/booking', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(bookingData)
-    })
+    try {
+      const res = await fetch("http://localhost:5000/booking", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(bookingData),
+      });
 
-    toast.success('Booking Complete')
+      if (!res.ok) {
+        throw new Error(`Booking failed: ${res.status}`);
+      }
+
+      toast.success("Booking Complete", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    } catch (error) {
+      toast.error("Booking failed. Please try again.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+
+      console.error(error);
+    }
   };
 
   return (

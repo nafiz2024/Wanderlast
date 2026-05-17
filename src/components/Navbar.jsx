@@ -67,7 +67,7 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <Link href="/myBookings" className={navLinkClassName}>
+        <Link href="/my-bookings" className={navLinkClassName}>
           My Bookings
         </Link>
       </li>

@@ -9,3 +9,9 @@ export const getDestinationById = async (id) => {
     const data = await res.json();
     return data;
 }
+
+export const getBookingsByUserId = async (id) => {
+    const res = await fetch(`http://localhost:5000/booking/${id}`)
+    const data = await res.json();
+    return data;
+}
