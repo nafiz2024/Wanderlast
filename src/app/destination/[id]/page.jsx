@@ -3,13 +3,13 @@ import Link from "next/link";
 import {
   FiArrowLeft,
   FiCalendar,
-  FiCheck,
   FiMapPin,
   FiStar,
 } from "react-icons/fi";
 import { getDestinationById } from "@/lib/data";
 import { EditDestinationModal } from "@/components/EditDestinationModal";
 import { DeleteDestinationCard } from "@/components/DeleteDestinationCard";
+import { BookingCard } from "@/components/BookingCard";
 
 const getDurationText = (duration) => {
   const numericDuration = Number(duration);
@@ -21,23 +21,7 @@ const getDurationText = (duration) => {
   return duration || "Flexible stay";
 };
 
-const formatDepartureDate = (date) => {
-  if (!date) {
-    return "Date to be announced";
-  }
 
-  const parsedDate = new Date(date);
-
-  if (Number.isNaN(parsedDate.getTime())) {
-    return date;
-  }
-
-  return parsedDate.toLocaleDateString("en-US", {
-    month: "2-digit",
-    day: "2-digit",
-    year: "numeric",
-  });
-};
 
 const DestinationsDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -110,40 +94,7 @@ const DestinationsDetailsPage = async ({ params }) => {
             </div>
           </div>
 
-          <aside className="h-fit border border-[#ececec] bg-white px-5 py-6 shadow-[0_10px_30px_rgba(15,23,42,0.04)] lg:sticky lg:top-6">
-            <p className="text-[11px] text-[#9a9a9a]">Starting from</p>
-            <p className="mt-2 text-[38px] leading-none font-bold text-[#19a7c6]">
-              ${destination.price || "0"}
-            </p>
-            <p className="mt-1 text-[12px] text-[#8d8d8d]">per person</p>
-
-            <div className="mt-6 border border-[#e6e6e6] bg-[#fafafa] px-4 py-3.5 text-[13px] text-[#686868]">
-              {formatDepartureDate(destination.departureDate)}
-            </div>
-
-            <Link
-              href="/myBookings"
-              className="mt-4 inline-flex h-11 w-full items-center justify-center gap-2 bg-[#24a3bd] text-[13px] font-bold text-white transition-colors hover:bg-[#1f94ac]"
-            >
-              <span>Book Now</span>
-              <span aria-hidden="true">&rarr;</span>
-            </Link>
-
-            <div className="mt-6 space-y-3 text-[12px] text-[#7a7a7a]">
-              <div className="flex items-start gap-2">
-                <FiCheck className="mt-0.5 h-3.5 w-3.5 text-[#2fb36d]" />
-                <span>Free cancellation up to 7 days</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <FiCheck className="mt-0.5 h-3.5 w-3.5 text-[#2fb36d]" />
-                <span>Travel insurance included</span>
-              </div>
-              <div className="flex items-start gap-2">
-                <FiCheck className="mt-0.5 h-3.5 w-3.5 text-[#2fb36d]" />
-                <span>24/7 customer support</span>
-              </div>
-            </div>
-          </aside>
+          <BookingCard destination={destination} />
         </div>
 
       </div>

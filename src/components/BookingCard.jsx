@@ -1,0 +1,133 @@
+"use client";
+
+import { authClient } from "@/lib/auth-client";
+import { useRef, useState } from "react";
+import { FiCalendar, FiCheck } from "react-icons/fi";
+import { toast } from "react-toastify";
+
+const getToday = () => new Date().toISOString().split("T")[0];
+
+export function BookingCard({ destination }) {
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
+  const departureDateRef = useRef(null);
+  const [departureDate, setDepartureDate] = useState(null);
+  const selectedDepartureDate = departureDate ? new Date(departureDate) : null;
+
+  const handleOpenDatePicker = () => {
+    if (!departureDateRef.current) {
+      return;
+    }
+
+    departureDateRef.current.click();
+    departureDateRef.current.focus();
+    departureDateRef.current.showPicker?.();
+  };
+  
+  const { price, _id, destinationName, imageUrl, country } = destination;
+
+  const handleBooking = async () => {
+    if (!user?.id) {
+      toast.error("Please sign in before booking.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      return;
+    }
+
+    if (!departureDate) {
+      toast.error("Please select a departure date.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      return;
+    }
+
+    const bookingData = {
+      userId: user.id,
+      userImage: user.image || "",
+      userName: user.name || "",
+      destinationId: _id,
+      destinationName,
+      imageUrl,
+      country,
+      departureDate: new Date(departureDate),
+    };
+
+    res = await fetch('http://localhost:5000/booking', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(bookingData)
+    })
+
+    toast.success('Booking Complete')
+  };
+
+  return (
+    <aside className="h-fit border border-[#ececec] bg-white px-5 py-6 shadow-[0_10px_30px_rgba(15,23,42,0.04)] lg:sticky lg:top-6">
+      <p className="text-[11px] text-[#9a9a9a]">Starting from</p>
+      <p className="mt-2 text-[38px] leading-none font-bold text-[#19a7c6]">
+        ${price || "0"}
+      </p>
+      <p className="mt-1 text-[12px] text-[#8d8d8d]">per person</p>
+
+      <div
+        className="relative mt-6 border border-[#e6e6e6] bg-[#fafafa]"
+        onClick={handleOpenDatePicker}
+      >
+        <input
+          id="bookingDepartureDate"
+          ref={departureDateRef}
+          name="bookingDepartureDate"
+          type="date"
+          min={getToday()}
+          value={departureDate ?? ""}
+          onChange={(e) => setDepartureDate(e.target.value || null)}
+          className="h-11 w-full bg-transparent px-4 pr-11 text-[13px] text-[#1f2937] outline-none [color-scheme:light] [&::-webkit-calendar-picker-indicator]:opacity-0"
+        />
+        <button
+          type="button"
+          aria-label="Open calendar"
+          onClick={(e) => {
+            e.stopPropagation();
+            handleOpenDatePicker();
+          }}
+          className="absolute inset-y-0 right-0 flex w-11 items-center justify-center text-[#b2bcc8] transition-colors hover:text-[#24a3bd]"
+        >
+          <FiCalendar className="h-4 w-4" />
+        </button>
+      </div>
+
+      {selectedDepartureDate ? (
+        <p className="mt-2 text-[12px] text-[#7a7a7a]">
+          Selected: {selectedDepartureDate.toLocaleDateString("en-US")}
+        </p>
+      ) : null}
+
+      <button
+        type="button"
+        onClick={handleBooking}
+        className="mt-[14px] inline-flex h-[50px] w-full items-center justify-center bg-[#16a8c8] text-sm font-medium text-white transition-colors hover:bg-[#1096b3]"
+      >
+        Book Now
+      </button>
+
+      <div className="mt-6 space-y-3 text-[12px] text-[#7a7a7a]">
+        <div className="flex items-start gap-2">
+          <FiCheck className="mt-0.5 h-3.5 w-3.5 text-[#2fb36d]" />
+          <span>Free cancellation up to 7 days</span>
+        </div>
+        <div className="flex items-start gap-2">
+          <FiCheck className="mt-0.5 h-3.5 w-3.5 text-[#2fb36d]" />
+          <span>Travel insurance included</span>
+        </div>
+        <div className="flex items-start gap-2">
+          <FiCheck className="mt-0.5 h-3.5 w-3.5 text-[#2fb36d]" />
+          <span>24/7 customer support</span>
+        </div>
+      </div>
+    </aside>
+  );
+}

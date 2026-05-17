@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Button, Modal } from "@heroui/react";
 import {
   FiChevronDown,
@@ -14,7 +15,24 @@ const inputClassName =
 const textareaClassName =
   "h-[130px] w-full resize-none border border-[#e9edf2] bg-[#f7f9fc] px-4 py-3 text-[13px] text-[#1f2937] outline-none placeholder:text-[#8f949c]";
 
+const formatDateValue = (value) => {
+  if (!value) {
+    return "";
+  }
+
+  const parsedDate = new Date(value);
+
+  if (Number.isNaN(parsedDate.getTime())) {
+    return "";
+  }
+
+  return parsedDate.toISOString().split("T")[0];
+};
+
 export function EditDestinationModal( { destination }) {
+  const [departureDate, setDepartureDate] = useState(
+    formatDateValue(destination.departureDate),
+  );
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -162,10 +180,10 @@ export function EditDestinationModal( { destination }) {
                   <input
                     id="departureDate"
                     name="departureDate"
-                    type="text"
-                    placeholder="mm/dd/yyyy"
+                    type="date"
                     className={inputClassName}
-                    defaultValue={destination.departureDate}  
+                    value={departureDate}
+                    onChange={(e) => setDepartureDate(e.target.value)}
                   />
                 </div>
 
