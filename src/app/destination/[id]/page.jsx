@@ -145,6 +145,7 @@ const DestinationsDetailsPage = async ({ params }) => {
             </div>
           </aside>
         </div>
+
       </div>
     </section>
   );

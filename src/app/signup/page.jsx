@@ -5,7 +5,7 @@ import { useState } from "react";
 import { redirect, useRouter } from "next/navigation";
 import { Cormorant_Garamond } from "next/font/google";
 import { FcGoogle } from "react-icons/fc";
-import { FiLock, FiMail, FiUser } from "react-icons/fi";
+import { FiImage, FiLock, FiMail, FiUser } from "react-icons/fi";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
 
@@ -21,6 +21,7 @@ const SignUpPage = () => {
   const router = useRouter();
   const [submitError, setSubmitError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [imagePreview, setImagePreview] = useState("");
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -40,6 +41,7 @@ const SignUpPage = () => {
       name: user.name,
       email: user.email,
       password: user.password,
+      image: user.image?.trim() || undefined,
     });
 
     setIsSubmitting(false);
@@ -118,6 +120,38 @@ const SignUpPage = () => {
 
             <div className="mt-3">
               <label
+                htmlFor="image"
+                className="mb-2 block text-sm font-medium text-[#151515]"
+              >
+                Profile Image URL
+              </label>
+              <div className="relative">
+                <FiImage className="pointer-events-none absolute top-1/2 left-4 h-[18px] w-[18px] -translate-y-1/2 text-[#6f6f6f]" />
+                <input
+                  name="image"
+                  id="image"
+                  type="url"
+                  placeholder="https://example.com/profile.jpg"
+                  className={inputClassName}
+                  onChange={(e) => setImagePreview(e.target.value.trim())}
+                />
+              </div>
+
+              {imagePreview ? (
+                <div className="mt-3 flex items-center gap-3 border border-[#efefef] bg-[#fbfbfb] px-3 py-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={imagePreview}
+                    alt="Profile preview"
+                    className="h-12 w-12 rounded-full object-cover"
+                  />
+                  <p className="text-sm text-[#6f6f6f]">Profile preview</p>
+                </div>
+              ) : null}
+            </div>
+
+            <div className="mt-3">
+              <label
                 htmlFor="password"
                 className="mb-2 block text-sm font-medium text-[#151515]"
               >
@@ -171,8 +205,8 @@ const SignUpPage = () => {
             </div>
 
             <button
-            onClick={handleGoogleSignin}
-              type="submit"
+              onClick={handleGoogleSignin}
+              type="button"
               className="inline-flex h-[50px] w-full items-center justify-center gap-[10px] border border-[#efefef] bg-white text-sm font-medium text-[#151515]"
             >
               <FcGoogle className="h-[18px] w-[18px] shrink-0" />

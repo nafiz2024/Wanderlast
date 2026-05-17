@@ -3,14 +3,16 @@
 
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import { FiLock, FiMail } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const inputClassName =
   "h-11 w-full border border-[#efefef] bg-[#f8f8f8] px-4 pl-[38px] text-sm text-[#1d1d1d] outline-none placeholder:text-[#818181] focus:border-[#19a7c9] focus:bg-white autofill:shadow-[inset_0_0_0px_1000px_#f8f8f8] autofill:[-webkit-text-fill-color:#1d1d1d] autofill:[caret-color:#1d1d1d] focus:autofill:shadow-[inset_0_0_0px_1000px_#ffffff]";
 
 const SignInPage = () => {
+    const router = useRouter();
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -23,10 +25,9 @@ const SignInPage = () => {
           email: user.email,
         });
 
-        console.log({data, error})
-
         if (data) {
-            redirect("/");
+            router.push("/");
+            router.refresh();
         }
     
         if (error) {
@@ -38,10 +39,11 @@ const SignInPage = () => {
     }
 
     const handleGoogleSignin = async () => {
-    await authClient.signIn.social({
-      provider: "google"
-    })
-  }
+      await authClient.signIn.social({
+        provider: "google",
+        callbackURL: "/",
+      });
+    };
 
   return (
     <section className="min-h-[calc(100vh-56px)] bg-linear-to-b from-[#f8f8fa] to-[#f3f4f6] px-4 py-14">
@@ -124,12 +126,12 @@ const SignInPage = () => {
             </div>
 
             <button
-            onClick={handleGoogleSignin}
-              type="submit"
+              onClick={handleGoogleSignin}
+              type="button"
               className="inline-flex h-[50px] w-full items-center justify-center gap-[10px] border border-[#efefef] bg-white text-sm font-medium text-[#151515]"
             >
               <FcGoogle className="h-[18px] w-[18px] shrink-0" />
-              Sign Up With Google
+              Sign In With Google
             </button>
           </form>
 

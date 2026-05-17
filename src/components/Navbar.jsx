@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import logo from "@/../public/assets/Wanderlast.png";
 import Link from "next/link";
@@ -7,13 +8,26 @@ import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 import { FiLogOut, FiUser } from "react-icons/fi";
 
+const getAvatarSource = (imageUrl) => {
+  if (!imageUrl) {
+    return "";
+  }
+
+  if (imageUrl.startsWith("http://") || imageUrl.startsWith("https://")) {
+    return `/api/avatar?url=${encodeURIComponent(imageUrl)}`;
+  }
+
+  return imageUrl;
+};
+
 const Navbar = () => {
   const router = useRouter();
-
   const { data: session } = authClient.useSession();
-
   const user = session?.user;
   const userInitial = user?.name?.trim()?.charAt(0)?.toUpperCase() || "U";
+  const userImage = user?.image?.trim();
+  const avatarSource = getAvatarSource(userImage);
+  const [failedImageUrl, setFailedImageUrl] = useState("");
   const navLinkClassName =
     "inline-flex h-10 items-center justify-center rounded-full border border-transparent px-4 text-sm font-medium text-[#12313a] transition-colors hover:border-[#d9eef3] hover:bg-[#f6fcfe] hover:text-[#15A1BF] focus:border-[#d9eef3] focus:bg-[#f6fcfe] focus:text-[#15A1BF]";
 
@@ -22,6 +36,23 @@ const Navbar = () => {
     router.push("/signin");
     router.refresh();
   };
+
+  const avatar = avatarSource && avatarSource !== failedImageUrl ? (
+    <>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={avatarSource}
+        alt={user.name || "User avatar"}
+        className="h-10 w-10 rounded-full object-cover ring-2 ring-white"
+        onError={() => setFailedImageUrl(avatarSource)}
+        referrerPolicy="no-referrer"
+      />
+    </>
+  ) : (
+    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#15A1BF] text-sm font-semibold text-white">
+      {userInitial}
+    </div>
+  );
 
   const navLinks = (
     <>
@@ -54,9 +85,7 @@ const Navbar = () => {
         <>
           <li>
             <div className="flex items-center gap-3 rounded-full border border-[#d9eef3] bg-linear-to-r from-[#f6fcfe] to-white px-2 py-2 shadow-[0_10px_24px_rgba(21,161,191,0.08)]">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#15A1BF] text-sm font-semibold text-white">
-                {userInitial}
-              </div>
+              {avatar}
               <div className="min-w-0 leading-tight">
                 <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#6f8b92]">
                   Signed in
@@ -126,9 +155,7 @@ const Navbar = () => {
                 Signed in
               </p>
               <div className="mt-2 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#15A1BF] text-sm font-semibold text-white">
-                  {userInitial}
-                </div>
+                {avatar}
                 <p className="truncate text-sm font-semibold text-[#12313a]">
                   {user.name}
                 </p>

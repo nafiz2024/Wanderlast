@@ -25,10 +25,17 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  account: {
+    accountLinking: {
+      trustedProviders: ["google"],
+      requireLocalEmailVerified: false,
+    },
+  },
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_SECRET
-    }
-  }
+      clientSecret: process.env.GOOGLE_SECRET,
+      overrideUserInfoOnSignIn: true,
+    },
+  },
 });
