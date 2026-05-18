@@ -8,10 +8,9 @@ export const getDestinationsData = async () => {
 }
 
 export const getDestinationById = async (id) => {
-
     const {token} = await auth.api.getToken({
     headers: await headers()
-  })
+    })
 
     const res = await fetch(`http://localhost:5000/destination/${id}`, {
         headers: {
@@ -23,7 +22,15 @@ export const getDestinationById = async (id) => {
 }
 
 export const getBookingsByUserId = async (id) => {
-    const res = await fetch(`http://localhost:5000/booking/${id}`)
+    const {token} = await auth.api.getToken({
+    headers: await headers()
+    })
+
+    const res = await fetch(`http://localhost:5000/booking/${id}`, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    })
     const data = await res.json();
     return data;
 }

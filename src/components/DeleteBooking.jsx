@@ -1,15 +1,19 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { FiTrash2 } from "react-icons/fi";
 
 export function DeleteBooking({ bookingId }) {
 
     const handleCancelBooking = async() => {
+        const {data:tokenData} = await authClient.token()
+
         await fetch(`http://localhost:5000/booking/${bookingId}`, {
             method: "DELETE",
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                authorization: `Bearer ${tokenData?.token}`
             }
         })
 
