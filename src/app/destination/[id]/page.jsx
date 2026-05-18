@@ -25,6 +25,7 @@ const getDurationText = (duration) => {
 
 const DestinationsDetailsPage = async ({ params }) => {
   const { id } = await params;
+
   const destination = await getDestinationById(id);
 
   return (
