@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="bg-black px-6 py-14 text-gray-400 md:px-10 lg:px-16">
+    <footer className="bg-black px-4 py-14 text-gray-400 sm:px-6 md:px-10 lg:px-16">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-white sm:text-5xl md:text-6xl lg:text-7xl">
@@ -18,11 +18,11 @@ const Footer = () => {
               Subscribe for exclusive travel deals and inspiration.
             </p>
 
-            <div className="flex items-center bg-gray-800 px-4 py-3">
+            <div className="flex flex-wrap items-center gap-3 bg-gray-800 px-4 py-3 sm:flex-nowrap">
               <input
                 type="email"
                 placeholder="Enter email"
-                className="flex-1 bg-transparent text-sm outline-none"
+                className="min-w-0 flex-1 bg-transparent text-sm outline-none"
               />
               <span className="text-lg text-white">&rarr;</span>
             </div>

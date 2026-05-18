@@ -42,7 +42,7 @@ const ChooseWanderlust = () => {
             return (
               <article
                 key={item.title}
-                className="bg-white px-6 py-8 shadow-[0_2px_8px_rgba(15,23,42,0.04)]"
+                className="bg-white px-5 py-7 shadow-[0_2px_8px_rgba(15,23,42,0.04)] sm:px-6 sm:py-8"
               >
                 <span className="inline-flex text-[#19a7c9]">
                   <Icon className="h-7 w-7" />

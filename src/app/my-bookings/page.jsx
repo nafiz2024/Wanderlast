@@ -70,7 +70,7 @@ const MyBookings = async () => {
                   className="border border-[#ececec] bg-white p-3 shadow-[0_3px_10px_rgba(15,23,42,0.03)] sm:p-4"
                 >
                   <div className="flex flex-col gap-4 md:flex-row md:items-center">
-                    <div className="relative h-[150px] w-full overflow-hidden bg-[#eef2f5] md:w-[250px]">
+                    <div className="relative h-[180px] w-full overflow-hidden bg-[#eef2f5] sm:h-[220px] md:h-[150px] md:w-[250px]">
                       <Image
                         src={booking.imageUrl || "/assets/destinations/image1.png"}
                         alt={booking.destinationName || "Booked destination"}
@@ -89,7 +89,7 @@ const MyBookings = async () => {
                           {statusMeta.label}
                         </span>
 
-                        <h2 className="mt-2 text-[28px] leading-none font-light tracking-[-0.04em] text-[#161616]">
+                        <h2 className="mt-2 text-[24px] leading-none font-light tracking-[-0.04em] text-[#161616] sm:text-[28px]">
                           {booking.destinationName || "Untitled Destination"}
                         </h2>
 
@@ -113,7 +113,7 @@ const MyBookings = async () => {
                         </p>
                       </div>
 
-                      <div className="flex items-center justify-end gap-2">
+                      <div className="flex flex-wrap items-center justify-start gap-2 md:justify-end">
                         <DeleteBooking bookingId={booking._id} />
                         <Link
                           href={booking.destinationId ? `/destination/${booking.destinationId}` : "#"}

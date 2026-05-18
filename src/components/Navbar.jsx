@@ -142,7 +142,7 @@ const Navbar = () => {
         <Link href="/destination">Destinations</Link>
       </li>
       <li>
-        <Link href="/contact">My Bookings</Link>
+        <Link href="/my-bookings">My Bookings</Link>
       </li>
       <li>
         <Link href="/add-destination">Admin</Link>
@@ -194,14 +194,14 @@ const Navbar = () => {
 
   return (
     <div className="p-3 sm:p-4">
-      <div className="max-lg:collapse w-full rounded-md bg-white text-[#0C0B0B] shadow-sm">
+      <div className="max-lg:collapse w-full overflow-visible rounded-md bg-white text-[#0C0B0B] shadow-sm">
         <input id="navbar-1-toggle" className="peer hidden" type="checkbox" />
         <label
           htmlFor="navbar-1-toggle"
           className="fixed inset-0 hidden max-lg:peer-checked:block"
         ></label>
-        <div className="collapse-title navbar min-h-[68px] ">
-          <div className="navbar-start hidden flex-1 lg:flex">
+        <div className="collapse-title navbar min-h-[68px] gap-3 px-3 sm:px-4">
+          <div className="navbar-start hidden min-w-0 flex-1 lg:flex">
             <ul className="menu menu-horizontal flex gap-4 xl:gap-5">
               {navLinks}
             </ul>
@@ -227,7 +227,7 @@ const Navbar = () => {
               </svg>
             </label>
           </div>
-          <div className="navbar-center mx-4 shrink-0">
+          <div className="navbar-center mx-auto shrink-0 lg:mx-4">
             <Link href="/" className="inline-flex items-center justify-center">
               <Image
                 src={logo}
@@ -238,16 +238,18 @@ const Navbar = () => {
               />
             </Link>
           </div>
-          <div className="navbar-end hidden flex-1 lg:flex">
-            <ul className="menu menu-horizontal flex gap-4 xl:gap-5">
+          <div className="navbar-end hidden min-w-0 flex-1 lg:flex">
+            <ul className="menu menu-horizontal ml-auto flex gap-4 xl:gap-5">
               {accountLinks}
             </ul>
           </div>
-          <div className="navbar-end lg:hidden"></div>
+          <div className="navbar-end w-10 lg:hidden"></div>
         </div>
 
         <div className="collapse-content z-1 border-t border-[#f1f1f1] px-4 pb-4 pt-2 lg:hidden">
-          <ul className="menu flex gap-1 text-[14px]">{mobileNavLinks}</ul>
+          <ul className="menu flex gap-1 text-[14px] [&_a]:rounded-2xl [&_a]:px-3 [&_a]:py-2 [&_a:hover]:bg-[#f6fcfe] [&_button]:rounded-2xl [&_button]:px-3 [&_button]:py-2 [&_button:hover]:bg-[#f6fcfe]">
+            {mobileNavLinks}
+          </ul>
         </div>
       </div>
     </div>

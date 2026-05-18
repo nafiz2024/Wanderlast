@@ -92,7 +92,7 @@ const ClientReview = () => {
               className="grid overflow-hidden border border-[#ececec] bg-white shadow-[0_3px_10px_rgba(15,23,42,0.03)] md:grid-cols-[1.2fr_0.8fr]"
             >
               <div className="flex flex-col justify-between px-4 py-5 sm:px-5 sm:py-6">
-                <p className="max-w-[360px] text-[15px] leading-7 text-[#202020]">
+                <p className="max-w-[360px] text-[14px] leading-7 text-[#202020] sm:text-[15px]">
                   {review.quote}
                 </p>
 
@@ -104,7 +104,7 @@ const ClientReview = () => {
                 </div>
               </div>
 
-              <div className="relative min-h-[220px] bg-[#eef3f5]">
+              <div className="relative min-h-[220px] bg-[#eef3f5] md:min-h-full">
                 <Image
                   src={review.image}
                   alt={review.name}

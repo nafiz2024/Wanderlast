@@ -46,24 +46,24 @@ const Banner = () => {
         <Navbar />
       </div>
 
-      <div className="mx-auto flex w-full max-w-[1200px] flex-1 items-center justify-center px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-24 sm:pt-36 lg:pb-28 lg:pt-40">
+      <div className="mx-auto flex w-full max-w-[1200px] flex-1 items-center justify-center px-4 pb-14 pt-24 text-center sm:px-6 sm:pb-24 sm:pt-36 lg:pb-28 lg:pt-40">
         <div className="max-w-[1160px]">
-          <h1 className="text-[40px] font-normal leading-[0.95] tracking-tight sm:text-6xl lg:text-[72px]">
+          <h1 className="text-[36px] font-normal leading-[0.95] tracking-tight sm:text-6xl lg:text-[72px]">
             Discover Your
             <br />
             Next Adventure
           </h1>
 
-          <p className="mx-auto mt-5 max-w-[1120px] text-base font-normal text-white sm:text-xl lg:text-2xl">
+          <p className="mx-auto mt-5 max-w-[1120px] text-sm font-normal text-white sm:text-xl lg:text-2xl">
             Explore breathtaking destinations and create unforgettable
             memories with our curated travel experiences.
           </p>
 
-          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-5">
+          <div className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-5">
             <button
               type="button"
               onClick={() => router.push("/destination")}
-              className="min-w-[148px] bg-[#12b7ee] px-6 py-3 text-base font-medium uppercase text-white transition-colors hover:bg-[#0ea6d8] sm:text-lg"
+              className="w-full bg-[#12b7ee] px-6 py-3 text-base font-medium uppercase text-white transition-colors hover:bg-[#0ea6d8] sm:min-w-[148px] sm:w-auto sm:text-lg"
             >
               Explore Now
             </button>
@@ -71,7 +71,7 @@ const Banner = () => {
             <button
               type="button"
               onClick={() => router.push("/destination")}
-              className="min-w-[181px] bg-white/35 px-6 py-3 text-base font-medium uppercase text-white backdrop-blur-[1px] transition-colors hover:bg-white/45 sm:text-lg"
+              className="w-full bg-white/35 px-6 py-3 text-base font-medium uppercase text-white backdrop-blur-[1px] transition-colors hover:bg-white/45 sm:min-w-[181px] sm:w-auto sm:text-lg"
             >
               View Destination
             </button>

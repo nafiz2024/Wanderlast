@@ -88,7 +88,7 @@ const DestinationsDetailsPage = async ({ params }) => {
               <h2 className="text-[22px] font-medium tracking-[-0.03em] text-[#1f1f1f]">
                 Overview
               </h2>
-              <p className="mt-4 max-w-[720px] text-[13px] leading-7 text-[#777777] sm:text-[14px]">
+              <p className="mt-4 max-w-[720px] break-words text-[13px] leading-7 text-[#777777] sm:text-[14px]">
                 {destination.description ||
                   "No description available for this destination yet."}
               </p>

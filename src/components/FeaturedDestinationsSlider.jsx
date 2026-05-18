@@ -121,7 +121,7 @@ const FeaturedDestinationsSlider = ({ destinations }) => {
                       <span>{destination.country || "Unknown"}</span>
                     </div>
 
-                    <div className="mt-1 flex items-end justify-between gap-3">
+                    <div className="mt-1 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-3">
                       <h3 className="text-[20px] leading-[1.15] font-normal text-[#1e1e1e] sm:text-[22px]">
                         {destination.destinationName || "Untitled"}
                       </h3>
@@ -153,7 +153,7 @@ const FeaturedDestinationsSlider = ({ destinations }) => {
           </div>
         </div>
 
-        <div className="mt-10 flex items-center justify-between gap-4">
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex min-w-0 flex-1 items-center gap-5">
             <span className="shrink-0 text-[30px] leading-none font-light tracking-[-0.04em] text-[#1f1f1f]">
               {activeIndex + 1}/{items.length}
@@ -161,7 +161,7 @@ const FeaturedDestinationsSlider = ({ destinations }) => {
             <div className="h-px flex-1 bg-[#ececec]" />
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 self-end sm:self-auto">
             <button
               type="button"
               onClick={handlePrevious}
