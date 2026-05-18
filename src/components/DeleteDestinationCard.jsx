@@ -6,7 +6,7 @@ import { FiTrash2 } from "react-icons/fi";
 export function DeleteDestinationCard({ destination }) {
  
     const handleDelete = async () => {
-        await fetch(`http://localhost:5000/destination/${destination._id}`, {
+        await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${destination._id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

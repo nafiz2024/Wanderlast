@@ -200,7 +200,7 @@ const Navbar = () => {
           htmlFor="navbar-1-toggle"
           className="fixed inset-0 hidden max-lg:peer-checked:block"
         ></label>
-        <div className="collapse-title navbar min-h-[68px] px-4 sm:px-6">
+        <div className="collapse-title navbar min-h-[68px] ">
           <div className="navbar-start hidden flex-1 lg:flex">
             <ul className="menu menu-horizontal flex gap-4 xl:gap-5">
               {navLinks}
